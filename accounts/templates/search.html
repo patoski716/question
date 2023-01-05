@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="home">
+    <!-- Background image artist https://unsplash.com/@thepootphotographer -->
+    <div class="home_background parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/courses.jpg' %}" data-speed="0.8"></div>
+    <div class="home_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content text-center">
+                        <div class="home_title">Past Questions</div>
+                        <div class="breadcrumbs">
+                            <ul>
+                                <li><a href="{% url 'home' %}">Home</a></li>
+                                <li>Past Questions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="courses">
+    <div class="container">
+    
+<div class="row courses_row">
+				
+    <!-- Course -->
+    
+    {% for post in posts %}
+        
+        
+    <div class="col-lg-4 col-md-6">
+        <div class="course">
+            <div class="course_image"><img src="{{post.photo.url}}" alt="" style="width:360px"></div>
+            <div class="course_body">
+                <div class="course_header d-flex flex-row align-items-center justify-content-start">
+                    <div class="course_tag"><a href="{{post.photo.url}}" download>Download</a></div>
+                    <div class="course_price ml-auto">Session: <span>{{post.session}}</span></div>
+                </div>
+                <div class="course_title"><h3><a href="courses.html">{{post.course_title}}</a></h3></div>
+                <div class="course_text">
+                    <div class="course_header d-flex flex-row align-items-center justify-content-start">
+                        <div class="course_prices">{{post.department}}</div>
+                        <div class="course_price ml-auto">Semester: <span>{{post.semester}}</span></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+
+    
+</div>
+    </div>
+
+    </div>
+
+{% endblock content %}
+    
